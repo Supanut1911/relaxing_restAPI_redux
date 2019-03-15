@@ -11,6 +11,8 @@ let std = [
           {id:5935512002,name:"Captain",surename:"America",Major:"IT",Gpa:3.50},  //1
           {id:5935512003,name:"Tony",surename:"Stark",Major:"FIS",Gpa:3.78},      //2
           {id:5935512004,name:"Peter",surename:"Parker",Major:"FHT",Gpa:3.00}     //3
+          {id:5935512004,name:"Peter",surename:"Parker",Major:"FHT",Gpa:3.00}     //3
+
           ]
 
 //------ dont need parameter to  Show , Create
@@ -49,7 +51,7 @@ router.route('/psu/:id')
     position = std.find( (item) => {
       return item.id == req.params.id;
     })
-    
+
     position.id = req.body.id
     position.name = req.body.name
     position.surename = req.body.surename
