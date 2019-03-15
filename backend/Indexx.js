@@ -32,22 +32,29 @@ router.route('/psu')
     res.send( 'add successful' )
   })
 
+var position
 //------------------ use parameter to Seek , Update , Delete
 router.route('/psu/:id')
 //seek std
-  .get((req,res)=>{
 
-    res.send( std[(req.params.id % 5935512000) -1 ])
+  .get((req,res)=>{
+      position = std.find( (item) => {
+      return item.id == req.params.id;
+    })
+    res.send(position)
   })
 
 //update detail of std
   .put((req,res)=>{
-    let id = (req.params.id % 5935512000) -1
-    std[id].id = req.body.id
-    std[id].name = req.body.name
-    std[id].surename = req.body.surename
-    std[id].Major = req.body.Major
-    std[id].Gpa = req.body.Gpa
+    position = std.find( (item) => {
+      return item.id == req.params.id;
+    })
+    
+    position.id = req.body.id
+    position.name = req.body.name
+    position.surename = req.body.surename
+    position.Major = req.body.Major
+    position.Gpa = req.body.Gpa
     res.send( 'update successful' )
   })
 
